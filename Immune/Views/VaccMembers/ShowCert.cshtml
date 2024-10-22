@@ -1,0 +1,86 @@
+﻿@model Immune.Models.VaccMembers
+
+@{
+    ViewData["Title"] = "ShowCert";
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="c:\users\diya\source\repos\immune\immune\wwwroot\lib\bootstrap\css\bootstrap.css" rel="stylesheet" />
+<link href="c:\users\diya\source\repos\immune\immune\wwwroot\lib\bootstrap\css\bootstrap.min.css" rel="stylesheet" />
+<link href="c:\users\diya\source\repos\immune\immune\wwwroot\lib\bootstrap\css\bootstrap.rtl.css" rel="stylesheet" />
+<link href="c:\users\diya\source\repos\immune\immune\wwwroot\lib\bootstrap\css\bootstrap.rtl.min.css" rel="stylesheet" />
+ <title>Document</title>
+ <style>
+     .outer-border{
+    width:800px; height:650px; padding:20px; text-align:center; border: 10px solid #673AB7;    margin-left: 21%;
+}
+
+.inner-dotted-border{
+    width:750px; height:600px; padding:20px; text-align:center; border: 5px solid #673AB7;border-style: dotted;
+}
+
+.certification{
+    font-size:50px; font-weight:bold;    color: #663ab7;
+}
+
+.certify{
+    font-size:25px;
+}
+
+.name{
+    font-size:30px;    color: green;
+}
+
+.fs-30{
+    font-size:30px;
+}
+
+.fs-20{
+    font-size:20px;
+}
+ </style>
+</head>
+<body>
+    
+    <div class="outer-border">
+<div class="inner-dotted-border">
+       <span class="certification">Certificate of Completion</span>
+       <br><br>
+       <span class="certify"><i>This is to certify that</i></span>
+       <br><br>
+            <span class="name"><b>@Html.DisplayFor(model => model.Name)</b></span><br /><br />
+       <span class="certify"><i>has successfully completed both the doses.</i></span> <br/><br/>
+            <p class="fs-20">Email: <span class="fs-20"><b> @Html.DisplayFor(model => model.Email)</b> </span> <br /> </p>
+            <p class="fs-20">DOB: <span class="fs-20"><b> @Html.DisplayFor(model => model.DOB)</b> </span> <br /> </p>
+            <p class="fs-20">City: <span class="fs-20"> <b>@Html.DisplayFor(model => model.City)</b> </span> <br /> </p>
+            
+            
+            </div>
+
+</div>
+</div>
+
+
+
+    <div>
+        <td>
+            <a asp-action="ShowCert" onclick="window.print()" class="btn btn-warning">Download</a>
+        </td>
+        <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+        <a asp-action="Index">Back to List</a>
+    </div>
+   
+</body>
+</html>
+
+
+
+
+
+

@@ -1,0 +1,39 @@
+﻿@model Immune.Models.UserDetails
+
+@{
+    ViewData["Title"] = "SignUp";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-6 offset-3 border border-primary rounded pl-5 pr-5 pb-5">
+            <div class="text-center">
+                <h1 class="text-info">User Registration Form</h1>
+            </div>
+            <form method="post" asp-action="SignUp">
+                <div class="form-group">
+                    <label asp-for="UserName"></label>
+                    <input type="text" asp-for="UserName" placeholder="" class="form-control" autocomplete="off" />
+                </div>
+                <div class="form-group">
+                    <label asp-for="UserEmail"></label>
+                    <input type="email" asp-for="UserEmail" placeholder="" class="form-control" autocomplete="off" />
+                    <div class="alert-danger"><p>@ViewBag.error</p></div>
+                </div>
+                <div class="form-group">
+                    <label asp-for="password"></label>
+                    <input type="password" asp-for="password" placeholder="" class="form-control" autocomplete="off" />
+                    <div class="alert-danger"><p>@ViewBag.error1</p></div>
+                </div>
+                <div class="form-group">
+                    <label asp-for="cpassword"></label>
+                    <input type="password" asp-for="cpassword" placeholder="" class="form-control" autocomplete="off" />
+                    
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Registration" class="btn btn-success btn-lg mb-1 float-right"/>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

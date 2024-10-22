@@ -1,0 +1,97 @@
+﻿@model IEnumerable<Immune.Models.VaccMembers>
+
+@{
+    ViewData["Title"] = "Index";
+}
+@using Microsoft.AspNetCore.Http
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+
+<h1>List Of Members that you have book the slots</h1>
+
+<div class="text-center">
+    <a class="text-light btn btn-primary font-weight-bold" asp-action="AddMembers" asp-controller="VaccMembers">Add Members</a>
+</div>
+
+<p>
+    @HttpContextAccessor.HttpContext.Session.GetInt32("UserId")
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DOB)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.City)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Dose1)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Dose2)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.uId)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            @if (item.uId == @HttpContextAccessor.HttpContext.Session.GetInt32("UserId").ToString())
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DOB)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.City)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Dose1)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Dose2)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.uId)
+                    </td>
+                    <td>
+                        <a asp-action="BookSlot" asp-route-id="@item.Id" class="btn btn-warning">Book Slot</a>
+                    </td>
+                    <td>
+                        <a asp-action="ShowCert" asp-route-id="@item.Id" class="btn btn-warning">Show Certificate</a>
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@item.Id">Details</a> 
+                    </td>
+                </tr>
+            }
+            
+        }
+    </tbody>
+</table>
+
+@if (ViewBag.msg != null)
+{
+        <script type="text/javascript">
+            window.onload = function () {
+                alert("@ViewBag.msg");
+            };
+        </script>
+}
